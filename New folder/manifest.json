@@ -4,11 +4,9 @@
   "version": "1.0",
   "description": "Save leads and opportunities",
   "permissions": [
-    "storage",
-    "tabs",
-    "activeTab"
+    "tabs"
   ],
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "index.html"
   }
 }
