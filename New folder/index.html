@@ -8,18 +8,72 @@
 
 <body>
 
+<div class="container">
+
     <h1>LeadVault</h1>
+
+    <div class="stats">
+
+        <div class="card">
+            <h3 id="lead-count">0</h3>
+            <p>Leads</p>
+        </div>
+
+        <div class="card">
+            <h3>0</h3>
+            <p>Contacts</p>
+        </div>
+
+        <div class="card">
+            <h3>0</h3>
+            <p>Ideas</p>
+        </div>
+
+    </div>
+
+    <select id="filter-category">
+
+        <option value="All">All</option>
+
+        <option value="Client">Client</option>
+
+        <option value="Research">Research</option>
+
+        <option value="Startup Idea">Startup Idea</option>
+
+        <option value="Development">Development</option>
+
+        <option value="General">General</option>
+
+    </select>
+
+    <input
+        type="text"
+        id="search"
+        placeholder="Search Leads..."
+    >
+
+<div class="buttons">
 
     <button id="save-btn">
         Save Current Website
     </button>
-    <button id="delete-btn">
-        Delete All Leads    
+
+    <button id="delete-last-btn">
+        Delete Last
     </button>
+
+    <button id="delete-btn">
+        Delete All
+    </button>
+
+</div>
 
     <ul id="lead-list"></ul>
 
-    <script src="script.js"></script>
+</div>
+
+<script src="script.js"></script>
 
 </body>
 
