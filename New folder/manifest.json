@@ -3,10 +3,23 @@
   "name": "LeadVault",
   "version": "1.0",
   "description": "Save leads and opportunities",
+
   "permissions": [
     "tabs"
   ],
+
   "action": {
     "default_popup": "index.html"
-  }
+  },
+
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "jspdf.umd.min.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
 }
