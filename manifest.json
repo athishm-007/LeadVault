@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "LeadVault",
+  "version": "1.0",
+  "description": "Save leads and opportunities",
+  "permissions": [
+    "storage",
+    "tabs",
+    "activeTab"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
