@@ -1,29 +1,472 @@
-body{
-    color: #333;
-    background-color: #f9f9f9;
-    width:350px;
-    padding:20px;
-    font-family:Arial, sans-serif;
+@font-face {
+  font-family: aquirebold;
+  src: url(fonts/AquireBold-8Ma60.woff);
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
-h1{
-    margin-top:0;
+@font-face {
+  font-family: chopsic;
+  src: url(fonts/Chopsic.woff);
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
-button{
+@font-face {
+  font-family: transcity;
+  src: url(fonts/Transcity-owMAA.woff);
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: blackmustang;
+  src: url(fonts/BlackMustang-MAYPY.woff);
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: vampirewars;
+  src: url(fonts/Vampire-Wars.woff);
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =========================
+   RESET
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   THEME
+========================= */
+
+:root {
+  --bg: #f8f7f2;
+  --card: #1b4332;
+  --input: #2d6a4f;
+  --text: #f1faee;
+  --accent: #d4af37;
+  --border: #3a5a40;
+  --danger: #8b0000;
+}
+
+/* =========================
+   BODY
+========================= */
+
+body {
+  width: 420px;
+  min-height: 650px;
+  background: var(--bg);
+  color: var(--text);
+  padding: 18px;
+  font-family: "Audiowide", sans-serif;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+h1 {
+  font-family: vampirewars;
+  text-shadow: 0 0 0px #510505;
+  text-align: center;
+  color: rgb(87, 50, 5);
+  font-size: 40px;
+  font-weight: bold;
+  letter-spacing: 7px;
+  position:relative;
+}
+
+h1::after{
+
+    content:"";
+    width:120px;
+    height:4px;
+    background:#D4AF37;
+    display:block;
+    margin:8px auto 0;
+    border-radius:999px;
+}
+
+/* =========================
+   TABS
+========================= */
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.tabs button {
+  background: var(--card);
+  color: var(--text);
+  border: none;
+  border-radius: 12px;
+  padding: 10px 6px;
+  cursor: pointer;
+  transition: 0.25s;
+  font-size: 14px;
+  font-family: "Audiowide", sans-serif;
+  position:relative;
+  overflow:hidden;
+}
+
+.tabs button:hover {
+  transform: translateY(-4px);
+}
+
+.tabs button::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
     width:100%;
-    padding:10px;
-    cursor:pointer;
+    height:100%;
+    background:
+    linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.2),
+    transparent
+    );
+    transition:.5s;
 }
 
-ul{
-    padding:0;
-    margin-top:15px;
+.tabs button:hover::before{
+    left:100%;
 }
 
-li{
-    list-style:none;
-    margin-bottom:10px;
-    border:1px solid #ddd;
-    padding:10px;
+.tabs button.active {
+  transition: 0.5s;
+  background: #26db8d;
+  color: #000;
+}
+
+/* =========================
+   DASHBOARD CARDS
+========================= */
+
+.stats {
+  display: inline-flex;
+}
+
+.card {
+  color: #000;
+  text-align: center;
+  margin-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card h3:hover {
+  transform: scale(1.25);
+  cursor: default;
+}
+
+.card h3 {
+  font-family: "Caveat Brush", cursive;
+  color: var(--accent);
+  font-size: 60px;
+  margin-bottom: 5px;
+  transition: 0.25s;
+}
+
+.card p {
+  font-size: 15px;
+}
+
+/* =========================
+   EXPORT PDF BUTTON
+========================= */
+
+#export-pdf-btn {
+  width: 100%;
+  background: var(--accent);
+  color: #000;
+  border: none;
+  border-radius: 14px;
+  padding: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: "Audiowide", sans-serif;
+  transition: 0.25s;
+}
+
+#export-pdf-btn:hover {
+  transform: scale(1.02);
+  color: #d4af37;
+  background-color: #000;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+input,
+textarea,
+select {
+  width: 100%;
+  background: var(--input);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 10px;
+  outline: none;
+  font-family: "Audiowide", sans-serif;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #d7e3d3;
+}
+
+input:hover,
+textarea:hover,
+select:hover {
+  transform: scale(1.03);
+  box-shadow: 0 2px 10px #000;
+}
+
+select:hover {
+  cursor: pointer;
+}
+
+textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+/* =========================
+   BUTTON GROUP
+========================= */
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.buttons button {
+  flex: 1;
+  background: var(--accent);
+  color: #000;
+  border: none;
+  padding: 12px;
+  text-align: center;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: transcity;
+  font-size: 20px;
+  transition: 0.5s;
+}
+
+.buttons button:hover {
+  transform: scale(0.9);
+}
+
+#delete-lead-btn,
+#delete-all-contacts-btn,
+#delete-all-ideas-btn,
+#delete-all-notes-btn {
+  background: var(--danger);
+  color: white;
+}
+
+/* =========================
+   LISTS
+========================= */
+
+ul {
+  padding: 0;
+  margin-top: 15px;
+}
+
+li {
+  list-style: none;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px;
+  margin-bottom: 12px;
+  text-align: left;
+  color: #c8a472;
+}
+
+#leadtitle {
+  font-size: 20px;
+  font-family: cursive;
+}
+
+#leaddate {
+  font-size: 15px;
+  font-family: "Black Ops One", system-ui;
+}
+
+/* =========================
+   LINKS
+========================= */
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  word-break: break-word;
+  padding: 10px;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #dbec59;
+}
+
+/* =========================
+   CARD ACTION BUTTONS
+========================= */
+
+.delete-single-btn,
+.delete-contact-btn,
+.delete-idea-btn,
+.delete-note-btn,
+.save-note-btn {
+  margin-top: 10px;
+  margin-left: 50px;
+  display: inline;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: var(--danger);
+  color: white;
+  font-family: transcity;
+  font-size: 20px;
+  transition: 0.5s;
+}
+
+.save-note-btn {
+  background: var(--accent);
+  color: #000;
+}
+
+.delete-single-btn:hover,
+.delete-contact-btn:hover,
+.delete-idea-btn:hover,
+.delete-note-btn:hover,
+.save-note-btn:hover {
+  transform: scale(0.9);
+  box-shadow: 0 2px 10px #000;
+}
+
+/* =========================
+   HEADINGS INSIDE TABS
+========================= */
+
+h2 {
+  text-align: center;
+  color: var(--accent);
+  margin-bottom: 15px;
+  font-family: "Orbitron", sans-serif;
+  font-size: 28px;
+}
+
+/* =========================
+   SMALL TEXT
+========================= */
+
+small {
+  color: #c7d4c2;
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 10px;
+  transition: 0.25s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #dfd513;
+}
+
+/* Up Arrow Button */
+::-webkit-scrollbar-button:vertical:decrement {
+  height: 16px;
+  background-color: #000;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 7px solid #d40505; 
+  background-clip: content-box;
+  padding: 4px;
+}
+
+/* Down Arrow Button */
+::-webkit-scrollbar-button:vertical:increment {
+  height: 16px;
+  background-color: #000;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 7px solid #d40505; 
+  background-clip: content-box;
+  padding: 4px;
+}
+
+/* =========================
+   SMOOTH TRANSITIONS
+========================= */
+
+button,
+input,
+textarea,
+select,
+.card,
+li {
+  transition: 0.25s;
+}
+
+/* =========================
+   FOCUS EFFECT
+========================= */
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.35);
 }

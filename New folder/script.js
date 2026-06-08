@@ -63,7 +63,7 @@ function renderLeads(leadsArray) {
         listItems += `
 <li>
 
-    <strong>
+    <strong id="leadtitle">
         ${leadsArray[i].title}
     </strong>
 
@@ -76,7 +76,7 @@ function renderLeads(leadsArray) {
 
     <br>
 
-    <small>
+    <small id="leaddate">
         ${leadsArray[i].date}
     </small>
 
@@ -124,6 +124,7 @@ function renderLeads(leadsArray) {
 
     <br>
 
+    
     <button
     class="save-note-btn"
     data-id="${leadsArray[i].id}">
@@ -277,7 +278,9 @@ function renderCurrentTab() {
 function renderLeadsPage() {
     document.getElementById("content-area").innerHTML = `
 
-        <select id="filter-category">
+    <h2>Leads</h2>
+        
+    <select id="filter-category">
 
             <option value="All">All</option>
             <option value="Client">Client</option>
@@ -296,11 +299,11 @@ function renderLeadsPage() {
 
         <div class="buttons">
 
-            <button id="save-btn">
+            <button id="save-lead-btn">
                 Save Current Website
             </button>
 
-            <button id="delete-btn">
+            <button id="delete-lead-btn">
                 Delete All Leads
             </button>
 
@@ -342,6 +345,7 @@ function renderContactsPage() {
             placeholder="Notes"
         ></textarea>
 
+        <div class="buttons">
         <button
             id="add-contact-btn"
         >
@@ -351,6 +355,7 @@ function renderContactsPage() {
         <button id="delete-all-contacts-btn">
             Delete All Contacts
         </button>
+        </div>
 
         <ul id="contact-list"></ul>
 
@@ -400,6 +405,7 @@ function renderIdeasPage() {
 
         </select>
 
+        <div class="buttons">
         <button id="add-idea-btn">
 
             Add Idea
@@ -409,6 +415,7 @@ function renderIdeasPage() {
         <button id="delete-all-ideas-btn">
             Delete All Ideas
         </button>
+        </div>
 
         <ul id="idea-list"></ul>
 
@@ -424,7 +431,7 @@ function renderIdeasPage() {
 function renderNotesPage() {
     document.getElementById("content-area").innerHTML = `
 
-        <h2>YouTube Notes</h2>
+        <h2>Notes</h2>
 
         <input
             id="video-title"
@@ -446,6 +453,7 @@ function renderNotesPage() {
             placeholder="Notes"
         ></textarea>
 
+        <div class="buttons">
         <button
             id="add-note-btn"
         >
@@ -455,6 +463,7 @@ function renderNotesPage() {
         <button id="delete-all-notes-btn">
             Delete All Notes
         </button>
+        </div>
 
         <ul id="notes-list"></ul>
 
@@ -468,9 +477,9 @@ function renderNotesPage() {
 //attach events to leads page elements
 
 function attachLeadEvents() {
-    const saveBtn = document.getElementById("save-btn");
+    const saveBtn = document.getElementById("save-lead-btn");
 
-    const deleteBtn = document.getElementById("delete-btn");
+    const deleteBtn = document.getElementById("delete-lead-btn");
 
     const searchInput = document.getElementById("search");
 
@@ -624,7 +633,7 @@ function addContact() {
 
     const emailPattern =/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!emailPattern.test(ontact.email)) {
+    if (!emailPattern.test(contact.email)) {
         alert("Enter a valid email address");
         return;
     }
@@ -967,7 +976,7 @@ function exportPDF() {
 
     doc.setFontSize(18);
     doc.text(
-        "LeadVault Report",
+        "LeadVault Data",
         20,
         y
     );
@@ -1087,7 +1096,7 @@ function exportPDF() {
     });
 
     doc.save(
-        "LeadVault-Report.pdf"
+        "LeadVault-Data.pdf"
     );
 
 }
